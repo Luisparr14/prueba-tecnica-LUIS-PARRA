@@ -5,6 +5,7 @@
   - Instalar dependencias `npm install`
   - Ejecutar el proyecto `npm run dev`
   - Abrir el navegador en `http://localhost:{port}`
+ - Para ver el projecto en INTERNET [Click Aqui](https://prueba-tecnica-luis-parra.vercel.app/)
 
 # Acerca del la prueba
 - Se completo la prueba en su totalidad
