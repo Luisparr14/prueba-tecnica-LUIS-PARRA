@@ -10,4 +10,4 @@
 - Se completo la prueba en su totalidad
 - Se adapto el diseño a mobile (Responsive)
 - Se agregó un componente Mark para resaltar el texto buscado
-  - ![image](https://github.com/Luisparr14/prueba-tecnica-LUIS-PARRA/assets/82967045/ad6121f2-8325-4df8-abd5-8b3d696afb96)
+  ![image](https://github.com/Luisparr14/prueba-tecnica-LUIS-PARRA/assets/82967045/ad6121f2-8325-4df8-abd5-8b3d696afb96)
