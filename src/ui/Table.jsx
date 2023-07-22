@@ -8,20 +8,22 @@ const Table = ({ columns, data, loading, onDelete, colorizeRows }) => {
   }
 
   return (
-    <table className='table w-full'>
-      <thead>
-        <tr>
-          {columns.map((columnName, index) => (
-            <th key={index} className='px-4 py-2'>
-              {columnName}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        <UserList users={data} loading={loading} onDelete={onDelete} colorizeRows={colorizeRows} />
-      </tbody>
-    </table>
+    <div className='relative overflow-x-auto'>
+      <table className='table-auto w-full overflow-auto'>
+        <thead>
+          <tr>
+            {columns.map((columnName, index) => (
+              <th key={index} className='px-4 py-2'>
+                {columnName}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          <UserList users={data} loading={loading} onDelete={onDelete} colorizeRows={colorizeRows} />
+        </tbody>
+      </table>
+    </div>
   )
 }
 
