@@ -1,8 +1,13 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Como ejecutar el proyecto
+ - Clonar el repositorio `git clone https://github.com/Luisparr14/prueba-tecnica-LUIS-PARRA`
+  - Instalar dependencias `npm install`
+  - Ejecutar el proyecto `npm run dev`
+  - Abrir el navegador en `http://localhost:{port}`
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Acerca del la prueba
+- Se completo la prueba en su totalidad
+- Se adapto el diseño a mobile (Responsive)
+- Se agregó un componente Mark para resaltar el texto buscado
+  - ![image](https://github.com/Luisparr14/prueba-tecnica-LUIS-PARRA/assets/82967045/ad6121f2-8325-4df8-abd5-8b3d696afb96)
