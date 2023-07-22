@@ -1,8 +1,16 @@
 import PropTypes from 'prop-types'
 import User from './User'
 
-const UserList = ({ users, onDelete, colorizeRows }) =>
-  users?.map((user) => <User key={user?.email} user={user} onDelete={onDelete} colorizeRows={colorizeRows} />)
+const UserList = ({ users, onDelete, colorizeRows, search }) =>
+  users?.map((user) => (
+    <User
+      key={user?.email}
+      user={user}
+      onDelete={onDelete}
+      colorizeRows={colorizeRows}
+      search={search}
+    />
+  ))
 
 export default UserList
 

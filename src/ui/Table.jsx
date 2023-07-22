@@ -2,7 +2,7 @@ import Loading from '../components/Loading'
 import UserList from '../components/UserList'
 import PropTypes from 'prop-types'
 
-const Table = ({ columns, data, loading, onDelete, colorizeRows, sortByRow }) => {
+const Table = ({ columns, data, loading, onDelete, colorizeRows, sortByRow, search }) => {
   if (loading) {
     return <Loading />
   }
@@ -20,7 +20,7 @@ const Table = ({ columns, data, loading, onDelete, colorizeRows, sortByRow }) =>
           </tr>
         </thead>
         <tbody>
-          <UserList users={data} loading={loading} onDelete={onDelete} colorizeRows={colorizeRows} />
+          <UserList users={data} loading={loading} onDelete={onDelete} colorizeRows={colorizeRows} search={search} />
         </tbody>
       </table>
     </div>
@@ -35,5 +35,6 @@ Table.propTypes = {
   loading: PropTypes.bool.isRequired,
   onDelete: PropTypes.func,
   sortByRow: PropTypes.func,
+  search: PropTypes.string,
   colorizeRows: PropTypes.bool
 }

@@ -109,6 +109,7 @@ function App () {
         onDelete={handleDelete}
         colorizeRows={colorizeRows}
         sortByRow={handleSortByRow}
+        search={search}
       />
     </>
   )
