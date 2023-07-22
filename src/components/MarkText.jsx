@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 const escapeRegExp = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
 const MarkText = ({ text, searchText }) => {
-  console.log(text)
   const regex = new RegExp(escapeRegExp(searchText), 'gi')
   const parts = text.split(regex)
   const matches = text.match(regex)
@@ -16,7 +15,7 @@ const MarkText = ({ text, searchText }) => {
       result.push(
         <mark
           key={i}
-          style={{ backgroundColor: '#FFD700', borderRadius: '3px' }}
+          className='bg-mark rounded-md'
         >
           {matches[i]}
         </mark>

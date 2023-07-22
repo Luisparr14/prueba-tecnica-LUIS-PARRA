@@ -7,6 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        mark: '#FFD700',
         even: '#112233',
         odd: '#556677'
       }
