@@ -2,7 +2,7 @@ import Loading from '../components/Loading'
 import UserList from '../components/UserList'
 import PropTypes from 'prop-types'
 
-const Table = ({ columns, data, loading, onDelete }) => {
+const Table = ({ columns, data, loading, onDelete, colorizeRows }) => {
   if (loading) {
     return <Loading />
   }
@@ -19,7 +19,7 @@ const Table = ({ columns, data, loading, onDelete }) => {
         </tr>
       </thead>
       <tbody>
-        <UserList users={data} loading={loading} onDelete={onDelete} />
+        <UserList users={data} loading={loading} onDelete={onDelete} colorizeRows={colorizeRows} />
       </tbody>
     </table>
   )
@@ -31,5 +31,6 @@ Table.propTypes = {
   columns: PropTypes.array.isRequired,
   data: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
-  onDelete: PropTypes.func
+  onDelete: PropTypes.func,
+  colorizeRows: PropTypes.bool
 }
