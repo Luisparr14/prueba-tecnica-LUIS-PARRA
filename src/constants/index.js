@@ -1,7 +1,22 @@
 export const COLUMN_NAMES = [
-  'Avatar',
-  'Nombre',
-  'Apellido',
-  'País',
-  'Acciones'
+  {
+    id: null,
+    value: 'Avatar'
+  },
+  {
+    id: 'first',
+    value: 'Nombre'
+  },
+  {
+    id: 'last',
+    value: 'Apellido'
+  },
+  {
+    id: 'country',
+    value: 'País'
+  },
+  {
+    id: null,
+    value: 'Acciones'
+  }
 ]

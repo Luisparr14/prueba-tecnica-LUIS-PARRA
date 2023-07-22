@@ -45,6 +45,20 @@ function App () {
     })
   }, [users])
 
+  const orderUsers = useCallback((data, type = 'first') => {
+    const userList = JSON.parse(JSON.stringify(data || users))
+
+    return userList?.sort((a, b) => {
+      if (a.name[type] < b.name[type]) {
+        return -1
+      }
+      if (a.name[type] > b.name[type]) {
+        return 1
+      }
+      return 0
+    })
+  }, [users])
+
   const usersBySearch = useMemo(() => {
     const userList = JSON.parse(JSON.stringify(users))
     if (!search) return userList
@@ -60,14 +74,23 @@ function App () {
     else setSortBy('country')
   }
 
+  const handleSortByRow = (id) => {
+    if (sortBy === id) setSortBy(null)
+    else setSortBy(id)
+  }
+
   const usersData = useMemo(() => {
     switch (sortBy) {
       case 'country':
         return usersOrderByCountry(usersBySearch)
+      case 'first':
+        return orderUsers(usersBySearch, sortBy)
+      case 'last':
+        return orderUsers(usersBySearch, sortBy)
       default:
         return usersBySearch
     }
-  }, [usersBySearch, sortBy, usersOrderByCountry])
+  }, [sortBy, usersOrderByCountry, usersBySearch, orderUsers])
 
   return (
     <>
@@ -85,6 +108,7 @@ function App () {
         loading={loading}
         onDelete={handleDelete}
         colorizeRows={colorizeRows}
+        sortByRow={handleSortByRow}
       />
     </>
   )

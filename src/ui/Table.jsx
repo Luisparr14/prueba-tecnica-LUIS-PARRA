@@ -2,7 +2,7 @@ import Loading from '../components/Loading'
 import UserList from '../components/UserList'
 import PropTypes from 'prop-types'
 
-const Table = ({ columns, data, loading, onDelete, colorizeRows }) => {
+const Table = ({ columns, data, loading, onDelete, colorizeRows, sortByRow }) => {
   if (loading) {
     return <Loading />
   }
@@ -12,9 +12,9 @@ const Table = ({ columns, data, loading, onDelete, colorizeRows }) => {
       <table className='table-auto w-full overflow-auto'>
         <thead>
           <tr>
-            {columns.map((columnName, index) => (
-              <th key={index} className='px-4 py-2'>
-                {columnName}
+            {columns.map(({ id, value }, index) => (
+              <th key={index} className='px-4 py-2' onClick={id !== null ? () => sortByRow(id) : null}>
+                {value}
               </th>
             ))}
           </tr>
@@ -34,5 +34,6 @@ Table.propTypes = {
   data: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
   onDelete: PropTypes.func,
+  sortByRow: PropTypes.func,
   colorizeRows: PropTypes.bool
 }
