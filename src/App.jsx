@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import useApi from './hooks/useApi'
 import Table from './ui/Table'
 import Actions from './ui/Actions'
@@ -9,6 +9,7 @@ function App () {
   const { useGet } = useApi()
   const [refetch, setRefetch] = useState(false)
   const [sortBy, setSortBy] = useState(null)
+  const [search, setSearch] = useState('')
   const [colorizeRows, setColorizeRows] = useState(false)
 
   const {
@@ -18,8 +19,8 @@ function App () {
   } = useGet('https://randomuser.me/api/?results=100', refetch)
 
   const handleDelete = (email) => {
-    const newUsers = users?.results.filter((user) => user.email !== email)
-    setUsers({ ...users, results: newUsers })
+    const newUsers = users?.filter((user) => user.email !== email)
+    setUsers(newUsers)
   }
 
   const handleReset = () => {
@@ -30,10 +31,10 @@ function App () {
     setColorizeRows(!colorizeRows)
   }
 
-  const usersOrderByCountry = useMemo(() => {
-    const userList = JSON.parse(JSON.stringify(users))
+  const usersOrderByCountry = useCallback((data) => {
+    const userList = JSON.parse(JSON.stringify(data || users))
 
-    return userList?.results?.sort((a, b) => {
+    return userList?.sort((a, b) => {
       if (a.location.country < b.location.country) {
         return -1
       }
@@ -44,6 +45,16 @@ function App () {
     })
   }, [users])
 
+  const usersBySearch = useMemo(() => {
+    const userList = JSON.parse(JSON.stringify(users))
+    if (!search) return userList
+    return userList?.filter((user) =>
+      user.location.country.toLowerCase().includes(search.toLowerCase())
+    )
+  }, [search, users])
+
+  const handleSearch = (e) => setSearch(e.target.value)
+
   const handleSortByCountry = () => {
     if (sortBy === 'country') setSortBy(null)
     else setSortBy('country')
@@ -52,16 +63,22 @@ function App () {
   const usersData = useMemo(() => {
     switch (sortBy) {
       case 'country':
-        return usersOrderByCountry
+        return usersOrderByCountry(usersBySearch)
       default:
-        return users?.results
+        return usersBySearch
     }
-  }, [sortBy, users, usersOrderByCountry])
+  }, [usersBySearch, sortBy, usersOrderByCountry])
 
   return (
     <>
       <h1 className='text-6xl font-bold my-6 text-center'>Lista de usuarios</h1>
-      <Actions onColorizeRows={handleColorizeRows} onReset={handleReset} onSort={handleSortByCountry} />
+      <Actions
+        onColorizeRows={handleColorizeRows}
+        onReset={handleReset}
+        onSort={handleSortByCountry}
+        search={search}
+        onSearch={handleSearch}
+      />
       <Table
         columns={COLUMN_NAMES}
         data={usersData}
