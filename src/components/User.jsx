@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
-const User = ({ user, onDelete, rowAlternate }) => (
-  <tr className={rowAlternate ? 'even:bg-even odd:bg-odd row' : 'row'}>
+const User = ({ user, onDelete, colorizeRows }) => (
+  <tr className={colorizeRows ? 'even:bg-even odd:bg-odd row' : 'row'}>
     <td>
       <img src={user?.picture?.medium} alt={user.name} className='w-12 m-auto' />
     </td>
@@ -24,9 +24,9 @@ export default User
 User.propTypes = {
   user: PropTypes.object.isRequired,
   onDelete: PropTypes.func.isRequired,
-  rowAlternate: PropTypes.bool
+  colorizeRows: PropTypes.bool
 }
 
 User.defaultProps = {
-  rowAlternate: false
+  colorizeRows: false
 }
