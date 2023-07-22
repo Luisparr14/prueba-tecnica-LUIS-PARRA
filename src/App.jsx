@@ -49,7 +49,7 @@ function App () {
     else setSortBy('country')
   }
 
-  const userData = useMemo(() => {
+  const usersData = useMemo(() => {
     switch (sortBy) {
       case 'country':
         return usersOrderByCountry
@@ -64,7 +64,7 @@ function App () {
       <Actions onColorizeRows={handleColorizeRows} onReset={handleReset} onSort={handleSortByCountry} />
       <Table
         columns={COLUMN_NAMES}
-        data={userData}
+        data={usersData}
         loading={loading}
         onDelete={handleDelete}
         colorizeRows={colorizeRows}
