@@ -3,14 +3,16 @@ import { useEffect, useState } from 'react'
 const useApi = () => {
   const useGet = (url, refetch) => {
     const [data, setData] = useState([])
+    const [info, setInfo] = useState([])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
       const fetchData = async () => {
-        const seed = data?.info?.seed ? `&seed=${data?.info?.seed}` : ''
+        const seed = info?.seed ? `&seed=${info?.seed}` : ''
         const response = await fetch(`${url}${seed}`)
-        const resData = await response.json()
-        setData(resData)
+        const { results, info: resInfo } = await response.json()
+        setData(results)
+        setInfo(resInfo)
         setLoading(false)
       }
       fetchData()
