@@ -7,6 +7,7 @@ const useApi = () => {
 
     useEffect(() => {
       const fetchData = async () => {
+        setLoading(true)
         const seed = data?.info?.seed ? `&seed=${data?.info?.seed}` : ''
         const response = await fetch(`${url}${seed}`)
         const resData = await response.json()
