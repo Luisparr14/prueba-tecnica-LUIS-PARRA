@@ -5,15 +5,18 @@ export const COLUMN_NAMES = [
   },
   {
     id: 'first',
-    value: 'Nombre'
+    value: 'Nombre',
+    title: 'Ordenar por nombre'
   },
   {
     id: 'last',
-    value: 'Apellido'
+    value: 'Apellido',
+    title: 'Ordenar por apellido'
   },
   {
     id: 'country',
-    value: 'País'
+    value: 'País',
+    title: 'Ordenar por país'
   },
   {
     id: null,

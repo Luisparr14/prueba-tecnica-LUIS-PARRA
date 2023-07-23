@@ -22,11 +22,12 @@ const Table = ({
       <table className='table-auto w-full overflow-auto'>
         <thead>
           <tr>
-            {columns.map(({ id, value }, index) => (
+            {columns.map(({ id, value, title }, index) => (
               <th
                 key={index}
                 className={`px-4 py-2 ${isSorted(id) && 'cursor-pointer'}`}
                 onClick={isSorted(id) ? () => sortByRow(id) : null}
+                title={title}
               >
                 {value}
               </th>
