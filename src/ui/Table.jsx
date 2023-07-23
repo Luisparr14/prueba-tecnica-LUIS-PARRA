@@ -2,10 +2,20 @@ import Loading from '../components/Loading'
 import UserList from '../components/UserList'
 import PropTypes from 'prop-types'
 
-const Table = ({ columns, data, loading, onDelete, colorizeRows, sortByRow, search }) => {
+const Table = ({
+  columns,
+  data,
+  loading,
+  onDelete,
+  colorizeRows,
+  sortByRow,
+  search
+}) => {
   if (loading) {
     return <Loading />
   }
+
+  const isSorted = (id) => id !== null
 
   return (
     <div className='relative overflow-x-auto'>
@@ -13,14 +23,24 @@ const Table = ({ columns, data, loading, onDelete, colorizeRows, sortByRow, sear
         <thead>
           <tr>
             {columns.map(({ id, value }, index) => (
-              <th key={index} className='px-4 py-2' onClick={id !== null ? () => sortByRow(id) : null}>
+              <th
+                key={index}
+                className={`px-4 py-2 ${isSorted(id) && 'cursor-pointer'}`}
+                onClick={isSorted(id) ? () => sortByRow(id) : null}
+              >
                 {value}
               </th>
             ))}
           </tr>
         </thead>
         <tbody>
-          <UserList users={data} loading={loading} onDelete={onDelete} colorizeRows={colorizeRows} search={search} />
+          <UserList
+            users={data}
+            loading={loading}
+            onDelete={onDelete}
+            colorizeRows={colorizeRows}
+            search={search}
+          />
         </tbody>
       </table>
     </div>
